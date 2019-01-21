@@ -87,8 +87,19 @@ To ensure that the districts are grouped as accurately as possible, we need to d
 
 As can be seen from the figure above, at n=6 we see the reduction in the accuracy improvement. Therefore we will use 6 for the k-means clustering. Thus we will be grouping our districts into 6 distinct clusters based on the venue categories in that district.
 
+Clusters are fit to the data using the following:
+```
+kmeans = KMeans(n_clusters=kclusters, random_state=0).fit(district_grouped_clustering)
+```
+where kclusters = 6
+
 ### Results
 By following the methods laid out in the previous section, we have successfully clustered our districts into five distinct groups based on the frequency of different venue categories therein. The following is a visualization of these districts with color coded circles indicating the different clusters:
+![alt-text](https://github.com/stefmarais/battle-of-the-hoods/blob/master/img/mapped%20clusters.jpeg "Mapped Districts by Cluster")
 
 
 ### Discussion
+The clustered data showed that certain districts provide little in terms of variety and are predominantly filled with restaurants. Others are more tourist focused as seen by more hotels and foreign restaurants. 
+Considering the problem statement, the ideal cluster of districts would be cluster 5 since it contains a variety of venues while still having some interesting restaurants. By applying the methods described in this report I can simply evaluate two districts, i.e. Dongzhimen and Namofang Residential Districts, thus reducing the options from 20 to two.
+
+Although this particular notebook was used to analyze districts in Beijing, it would be trivial apply it to districts of any other city by creating a CSV file in the same format as the one used in the current notebook.
