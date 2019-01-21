@@ -18,8 +18,9 @@ The Foursquare API was used to retrieve the first 100 venues within a 1000m radi
 
 Since we are only interested in the venue category and not its name or geographical location information, the resultset can be transformed such that the districts are listed along with only the venue category. By performing further transofrmations on the data we can calculated the normalized frequency of the categories and sort the frequencies in descending order to obtain the most common venue types. Based on this transofrmation of the data, it is possible to perform k-means clustering. This will simplify the task of choosing a district to live in by only considering clusters that are similar to the criteria discussed previously and disregarding districts in clusters that are not of interest.
 
-### Methodology
+## Methodology
 To complete the problem stated above, the following steps were completed: 
+### Extract Data
 #### 1. Import and Plot Districts
 The locally stored CSV containing the 20 residential districts and their coordinates were read using Pandas and stored in a Dataframe for further use. Since the CSV file only contained the 20 districts and their coordinates and no other data, no further processing was needed. The following was used to read and store the CSV file:
 ```
@@ -73,9 +74,21 @@ def getNearbyVenues(names, latitudes, longitudes, radius=1000):
     
     return(nearby_venues)
 ```
+As can be seen above, the venue name; venue coordinates; and venue category are stored in the nearby_veues datafram in addition to the district data. The transformation of this data is described in the following section.
 
-#### District data
+### Transform data
+The nearby_venues dataframe is transformed by first performing onehot encoding. This is a technique whereby categorical variables are converted into a form that could be provided to ML algorithms to perform classification or clustering, as we in fact desire. The onehot encoded data provides a dataframe consisting of columns for each venue category.
+
+The dataframe is then grouped by district with the mean foreach column calculated.
+
+### Clustering the Data
+To ensure that the districts are grouped as accurately as possible, we need to determine the optimal number of k-clusters. This is done by calculating the sum of distances of samples to their closest cluster center. for the purpose of this analysis the possibe k-values were selected as ranging from 1-10. The resulting SSE is shown below:
+![alt text](https://github.com/stefmarais/battle-of-the-hoods/blob/master/img/sse%20analysis.jpeg "SSE Analysis of k-means")
+
+As can be seen from the figure above, at n=6 we see the reduction in the accuracy improvement. Therefore we will use 6 for the k-means clustering. Thus we will be grouping our districts into 6 distinct clusters based on the venue categories in that district.
 
 ### Results
+By following the methods laid out in the previous section, we have successfully clustered our districts into five distinct groups based on the frequency of different venue categories therein. The following is a visualization of these districts with color coded circles indicating the different clusters:
+
 
 ### Discussion
