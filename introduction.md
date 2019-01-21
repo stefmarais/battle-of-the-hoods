@@ -1,9 +1,11 @@
 ## Problem Statement
 ### Background
-#### Intorduction
+#### Introduction
 I am currently considering where to move in Beijing, China. Not knowing much about the city and its various residential districts make it difficult and overwhelming to make a decision on where to live. Therefore I decided to employ my newfound data science skills to assist in the decision making.
 
 The decision on where to live will be made based on variety and type of venues in the district. As an expat, a slight bias will be given to districts that can be perceived as being more foreigner friendly and provide some sort of familiarity. 
+
+Instead of assessing each district on an individual basis, it should be possible to group districts in terms of similarity and then assess the group based on the grouping criteria. By assessing grouped districts, the decision making process will be simplified since it will not be necessary to consider all districts but only those in a selected grouping.
 
 ### Data
 
