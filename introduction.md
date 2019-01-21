@@ -7,6 +7,8 @@ The decision on where to live will be made based on variety and type of venues i
 
 Instead of assessing each district on an individual basis, it should be possible to group districts in terms of similarity and then assess the group based on the grouping criteria. By assessing grouped districts, the decision making process will be simplified since it will not be necessary to consider all districts but only those in a selected grouping.
 
+Although the problem stated is specific to my personal and immediate needs, it is a general problem and can be applied to any person looking to relocate within any city. 
+
 ### Data
 
 Two sources of data will be used: **Popular residential districts** provided by a rental agent with their respective geographic centroids; **Foursquare venue data** as retrieved through the Foursquare API.
